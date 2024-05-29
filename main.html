@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>360&deg; Image</title>
+        <meta name="description" content="360&deg; Image - A-Frame">
+        <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    </head>
+    <body>
+        <a-scene>
+
+                <a-plane position="-2.5 1.5 40" color="" rotation="0 180 0" width="7" height="8" material="opacity: 0"></a-plane>
+                <!-- <a-sky id="sky" src="./1.jpg" rotation="0 -130 0"></a-sky> -->
+                <a-sky id="sky" src="1.jpg" rotation="0 -90 0"></a-sky>
+                <a-camera>
+                    <a-cursor></a-cursor>
+                </a-camera>
+                <!-- <a-text font="kelsonsans" value="Puy de Sancy, France" width="6" position="-2.5 0.25 -1.5" rotation="0 15 0"></a-text> -->
+        </a-scene>
+
+        <script>
+        const sky = document.querySelector('a-sky');
+        document.querySelector('a-plane').addEventListener('click', function (event) {
+            const att = sky.getAttribute('src');
+            console.log(att)
+            if(att === '1.jpg')
+            {
+                sky.setAttribute('src', '2.jpg');
+                sky.setAttribute('rotation', '0 90 0');
+                this.setAttribute("position", "-3 15 30");
+                this.setAttribute("width", "30");
+                this.setAttribute("height", "20");
+                this.setAttribute("rotation", "0 180 0");
+            }
+            else if( att === '2.jpg')
+            {
+                sky.setAttribute('src', '1.jpg');
+                sky.setAttribute('rotation', '0 -90 0');
+                this.setAttribute("position", "-2.5 1.5 40");
+                this.setAttribute("width", "7");
+                this.setAttribute("height", "8");
+                this.setAttribute("rotation", "0 180 0");
+            }
+        });
+        </script>
+    </body>
+</html>
